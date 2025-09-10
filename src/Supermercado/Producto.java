@@ -11,19 +11,19 @@ import java.util.Objects;
  *
  * @author Usuario
  */
-public class Producto {
+public class Producto implements Comparable<Producto>{
      private int codigo;
     private String descripcion;
     private double precio;
     private int stock;
-    private String rubro; 
+    private Categoria rubro; 
 
-    public Producto(int codigo, String descripcion, double precio, int stock, String rubro) {
+    public Producto(int codigo, String descripcion, double precio, int stock, Categoria rubro) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
-        Rubro(rubro);
+        this.rubro = rubro;
     }
 
     public int getCodigo() {
@@ -58,21 +58,21 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getRubro() {
+    public Categoria getRubro() {
         return rubro;
     }
 
-    public void setRubro(String rubro) {
+    public void setRubro(Categoria rubro) {
         this.rubro = rubro;
     }
     
-    public void Rubro(String rubro){
-        if (rubro.equalsIgnoreCase("comestible")||rubro.equalsIgnoreCase("perfumeria")||rubro.equalsIgnoreCase("limpieza")) {
-            this.rubro=rubro;
-        }else{
-            System.out.println("¡Rubro invalido!");
-        }
-    }
+//    public void Rubro(String rubro){
+//        if (rubro.equalsIgnoreCase("comestible")||rubro.equalsIgnoreCase("perfumeria")||rubro.equalsIgnoreCase("limpieza")) {
+//            this.rubro=rubro;
+//        }else{
+//            System.out.println("¡Rubro invalido!");
+//        }
+//    }
 
     @Override
     public int hashCode() {
@@ -114,5 +114,17 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" + "codigo=" + codigo + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + ", rubro=" + rubro + '}';
+    }
+
+    @Override
+    public int compareTo(Producto t) {
+        //compare to solo devuelve 1 o 0
+        if(codigo == t.codigo){
+            return 0;
+        }else if(codigo > t.getCodigo()){
+            return 1;
+        }else{
+            return -1;
+        }
     }
 }
