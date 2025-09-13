@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/GitHub/Tp6_ej2/src/Supermercado/ListaporNombre.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/GitHub/Tp6_ej2/src/Supermercado/Producto.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/GitHub/Tp6_ej2/src/Supermercado/ListaPorRubroView.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/GitHub/Tp6_ej2/src/Supermercado/Panel.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/GitHub/Tp6_ej2/src/Supermercado/ListaPorPrecioView.java</file>
             <file>file:/C:/Users/crb_p/OneDrive/Documentos/GitHub/Tp6_ej2/src/Supermercado/GestionDeProductosView.java</file>
+=======
+            <file>file:/C:/Users/pc/Documents/GitHub/Tp6_ej2/src/Supermercado/Categoria.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/Tp6_ej2/src/Supermercado/Menu.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/Tp6_ej2/src/Supermercado/jifGestion.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/Tp6_ej2/src/Supermercado/Producto.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/Tp6_ej2/src/Supermercado/jifListadoNombre.java</file>
+>>>>>>> 7e24f304b533f9c3ef3dea58e257db61b831d2f6
         </group>
     </open-files>
 </project-private>
