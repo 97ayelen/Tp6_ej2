@@ -27,21 +27,126 @@ public class Panel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        Escritorio = new javax.swing.JDesktopPane();
+        jMBar1 = new javax.swing.JMenuBar();
+        jMenuAdm = new javax.swing.JMenu();
+        jMItGest = new javax.swing.JMenuItem();
+        jMenuCons = new javax.swing.JMenu();
+        jMItem2XNomb = new javax.swing.JMenuItem();
+        jMItemXPre = new javax.swing.JMenuItem();
+        jMItemXRub = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("TP6 DE TODO S.A.");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        setName("frameDeTodo"); // NOI18N
+
+        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
+        Escritorio.setLayout(EscritorioLayout);
+        EscritorioLayout.setHorizontalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1382, Short.MAX_VALUE)
+        );
+        EscritorioLayout.setVerticalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 930, Short.MAX_VALUE)
+        );
+
+        jMBar1.setForeground(new java.awt.Color(0, 0, 0));
+        jMBar1.setAlignmentX(10.0F);
+        jMBar1.setAlignmentY(1.0F);
+        jMBar1.setDoubleBuffered(true);
+        jMBar1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jMBar1.setMargin(new java.awt.Insets(5, 0, 5, 0));
+
+        jMenuAdm.setText("Administracion");
+
+        jMItGest.setText("Gestion de Productos");
+        jMItGest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMItGestActionPerformed(evt);
+            }
+        });
+        jMenuAdm.add(jMItGest);
+
+        jMBar1.add(jMenuAdm);
+
+        jMenuCons.setText("Consultas");
+
+        jMItem2XNomb.setText("Consulta por Nombre");
+        jMItem2XNomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMItem2XNombActionPerformed(evt);
+            }
+        });
+        jMenuCons.add(jMItem2XNomb);
+
+        jMItemXPre.setText("Consulta por Precio");
+        jMItemXPre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMItemXPreActionPerformed(evt);
+            }
+        });
+        jMenuCons.add(jMItemXPre);
+
+        jMItemXRub.setText("Consulta por Rubro");
+        jMItemXRub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMItemXRubActionPerformed(evt);
+            }
+        });
+        jMenuCons.add(jMItemXRub);
+
+        jMBar1.add(jMenuCons);
+
+        setJMenuBar(jMBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMItGestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMItGestActionPerformed
+GestionDeProductosView gdp = new GestionDeProductosView();
+Escritorio.add(gdp);
+gdp.setVisible(true);
+    }//GEN-LAST:event_jMItGestActionPerformed
+
+    private void jMItemXPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMItemXPreActionPerformed
+        ListaPorPrecioView lpp = new ListaPorPrecioView();
+Escritorio.add(lpp);
+lpp.setVisible(true);
+    }//GEN-LAST:event_jMItemXPreActionPerformed
+
+    private void jMItemXRubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMItemXRubActionPerformed
+       ListaPorRubroView lpr = new ListaPorRubroView();
+Escritorio.add(lpr);
+lpr.setVisible(true);
+    }//GEN-LAST:event_jMItemXRubActionPerformed
+
+    private void jMItem2XNombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMItem2XNombActionPerformed
+      ListaporNombre lpn = new ListaporNombre();
+Escritorio.add(lpn);
+lpn.setVisible(true);
+    }//GEN-LAST:event_jMItem2XNombActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +184,14 @@ public class Panel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JMenuBar jMBar1;
+    private javax.swing.JMenuItem jMItGest;
+    private javax.swing.JMenuItem jMItem2XNomb;
+    private javax.swing.JMenuItem jMItemXPre;
+    private javax.swing.JMenuItem jMItemXRub;
+    private javax.swing.JMenu jMenuAdm;
+    private javax.swing.JMenu jMenuCons;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
