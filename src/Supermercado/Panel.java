@@ -143,7 +143,7 @@ lpr.setVisible(true);
     }//GEN-LAST:event_jMItemXRubActionPerformed
 
     private void jMItem2XNombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMItem2XNombActionPerformed
-      ListaporNombre lpn = new ListaporNombre();
+      ListaPorNombre lpn = new ListaPorNombre();
 Escritorio.add(lpn);
 lpn.setVisible(true);
     }//GEN-LAST:event_jMItem2XNombActionPerformed
