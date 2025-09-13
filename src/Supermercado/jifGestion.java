@@ -6,6 +6,7 @@
 package Supermercado;
 
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -16,9 +17,11 @@ public class jifGestion extends javax.swing.JInternalFrame {
     /**
      * Creates new form jifGestion
      */
+    SpinnerNumberModel spinnerModelo = new SpinnerNumberModel();
     public jifGestion() {
         initComponents();
         cargarCombo();
+        modeloDelSpinner();
     }
 
     /**
@@ -38,9 +41,9 @@ public class jifGestion extends javax.swing.JInternalFrame {
         jlRubro = new javax.swing.JLabel();
         jcbCategoria = new javax.swing.JComboBox<>();
         jtfDescripcion = new javax.swing.JTextField();
-        jtfStock = new javax.swing.JTextField();
         jtfPrecio = new javax.swing.JTextField();
         jtfCodigo = new javax.swing.JTextField();
+        jSpinner = new javax.swing.JSpinner();
         jlTitulo = new javax.swing.JLabel();
         jbGuardar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
@@ -65,12 +68,6 @@ public class jifGestion extends javax.swing.JInternalFrame {
             }
         });
 
-        jtfStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfStockActionPerformed(evt);
-            }
-        });
-
         jtfCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfCodigoActionPerformed(evt);
@@ -86,8 +83,11 @@ public class jifGestion extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlPrecio)
                     .addComponent(jlRubro)
-                    .addComponent(jlStock))
-                .addContainerGap(254, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jlStock)
+                        .addGap(67, 67, 67)
+                        .addComponent(jSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(154, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(45, 45, 45)
@@ -97,23 +97,24 @@ public class jifGestion extends javax.swing.JInternalFrame {
                     .addGap(28, 28, 28)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtfDescripcion)
-                                .addComponent(jtfCodigo)
-                                .addComponent(jtfStock, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jcbCategoria, 0, 150, Short.MAX_VALUE)
+                            .addComponent(jtfCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jtfDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
                     .addContainerGap(45, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(109, Short.MAX_VALUE)
-                .addComponent(jlPrecio)
-                .addGap(26, 26, 26)
-                .addComponent(jlRubro)
-                .addGap(27, 27, 27)
-                .addComponent(jlStock)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jlPrecio)
+                        .addGap(26, 26, 26)
+                        .addComponent(jlRubro)
+                        .addGap(27, 27, 27)
+                        .addComponent(jlStock)))
                 .addGap(25, 25, 25))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -129,9 +130,7 @@ public class jifGestion extends javax.swing.JInternalFrame {
                     .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(jcbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jtfStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(21, Short.MAX_VALUE)))
+                    .addContainerGap(63, Short.MAX_VALUE)))
         );
 
         jlTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -197,10 +196,6 @@ public class jifGestion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfDescripcionActionPerformed
 
-    private void jtfStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfStockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfStockActionPerformed
-
     private void jtfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCodigoActionPerformed
@@ -208,7 +203,8 @@ public class jifGestion extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         int codigo = Integer.parseInt(jtfCodigo.getText());
         double precio = Double.parseDouble(jtfPrecio.getText());
-        int stock = Integer.parseInt(jtfStock.getText());
+        //int stock = Integer.parseInt(jtfStock.getText());
+        int stock = (Integer) jSpinner.getValue();
         Categoria rubro = (Categoria) jcbCategoria.getSelectedItem();
         Producto productoNuevo = new Producto(codigo, jtfDescripcion.getText(), precio, stock, rubro);
         
@@ -229,8 +225,14 @@ public class jifGestion extends javax.swing.JInternalFrame {
             jcbCategoria.addItem(aux);
         }
     }
+    
+    private void modeloDelSpinner(){
+        spinnerModelo.setMinimum(0);
+        jSpinner.setModel(spinnerModelo);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSpinner jSpinner;
     private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
@@ -245,6 +247,5 @@ public class jifGestion extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCodigo;
     private javax.swing.JTextField jtfDescripcion;
     private javax.swing.JTextField jtfPrecio;
-    private javax.swing.JTextField jtfStock;
     // End of variables declaration//GEN-END:variables
 }
