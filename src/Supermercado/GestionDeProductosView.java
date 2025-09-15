@@ -93,11 +93,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         jLabel7.setText("Stock:");
 
         jTDescripcion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTDescripcion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTDescripcionFocusLost(evt);
-            }
-        });
         jTDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCodigoActionPerformed(evt);
@@ -105,18 +100,8 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         });
 
         jTCodigo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTCodigoFocusLost(evt);
-            }
-        });
 
         jTPrecio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTPrecioFocusLost(evt);
-            }
-        });
         jTPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTPrecioActionPerformed(evt);
@@ -131,11 +116,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         });
 
         jTStock.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTStock.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTStockFocusLost(evt);
-            }
-        });
         jTStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCodigoActionPerformed(evt);
@@ -357,58 +337,25 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
 
-//        try {
-//            int codigo = Integer.parseInt(jTCodigo.getText());
-//            String descripcion = jTDescripcion.getText();
-//            double precio = Double.parseDouble(jTPrecio.getText());
-//            Categoria rubro = Categoria.valueOf(jTRubro.getText());
-//            int stock = Integer.parseInt(jTStock.getText());
-////        VIDEO JtABLE PARTE 1
-//            Producto pr = new Producto(codigo, descripcion, precio, stock, rubro);
-//
-//            CargarDatos(pr);
-//        } catch (NumberFormatException e) {
-//            JOptionPane.showMessageDialog(this, "debe ingresar un valor valido!");
-//        }
+        try {
+            int codigo = Integer.parseInt(jTCodigo.getText());
+            String descripcion = jTDescripcion.getText();
+            double precio = Double.parseDouble(jTPrecio.getText());
+            Categoria rubro = Categoria.valueOf(jTRubro.getText());
+            int stock = Integer.parseInt(jTStock.getText());
+//        VIDEO JtABLE PARTE 1
+            Producto pr = new Producto(codigo, descripcion, precio, stock, rubro);
+
+            CargarDatos(pr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "debe ingresar un valor valido!");
+        }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
        activarCampos();
        jBGuardar.setEnabled(true);
     }//GEN-LAST:event_jBNuevoActionPerformed
-
-    private void jTCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCodigoFocusLost
-        String val = "[0-9]*";
-        if (!jTCodigo.getText().matches(val)) {
-          JOptionPane.showMessageDialog(this, "debe ingresar un valor valido!");
-          jTCodigo.requestFocus();
-        }
-    }//GEN-LAST:event_jTCodigoFocusLost
-
-    private void jTDescripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTDescripcionFocusLost
-        if (jTDescripcion.getText().length() == 0) {
-        JOptionPane.showMessageDialog(this, "El campo no puede estar vacio!"); 
-        jTCodigo.requestFocus();
-        }
-    }//GEN-LAST:event_jTDescripcionFocusLost
-
-    private void jTPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTPrecioFocusLost
-       try{
-        String precio= jTPrecio.getText();
-        double prec = Double.parseDouble(precio);
-       }catch(NumberFormatException e){
-           JOptionPane.showMessageDialog(this, "debe ingresar un precio valido!");
-           jTPrecio.requestFocus();
-       }
-    }//GEN-LAST:event_jTPrecioFocusLost
-
-    private void jTStockFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTStockFocusLost
-       String val = "[0-9]*";
-        if (!jTStock.getText().matches(val)) {
-          JOptionPane.showMessageDialog(this, "debe ingresar un valor numerico!");
-          jTStock.requestFocus();
-        }
-    }//GEN-LAST:event_jTStockFocusLost
 
     private void jTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoActionPerformed
         // TODO add your handling code here:

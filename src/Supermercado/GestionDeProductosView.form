@@ -293,7 +293,6 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTDescripcionFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigoActionPerformed"/>
           </Events>
         </Component>
@@ -303,9 +302,6 @@
               <Font name="Dialog" size="14" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTCodigoFocusLost"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTPrecio">
           <Properties>
@@ -314,7 +310,6 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTPrecioFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTPrecioActionPerformed"/>
           </Events>
         </Component>
@@ -335,7 +330,6 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTStockFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigoActionPerformed"/>
           </Events>
         </Component>
