@@ -5,7 +5,9 @@
  */
 package Supermercado;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.TreeSet;
 
 /**
  *
@@ -17,6 +19,8 @@ public class Producto implements Comparable<Producto>{
     private double precio;
     private int stock;
     private Categoria rubro; 
+    private TreeSet<Producto> prod ;
+   
 
     public Producto(int codigo, String descripcion, double precio, int stock, Categoria rubro) {
         this.codigo = codigo;
@@ -24,6 +28,11 @@ public class Producto implements Comparable<Producto>{
         this.precio = precio;
         this.stock = stock;
         this.rubro = rubro;
+        this.prod = new TreeSet<>();
+    }
+    
+    public boolean agregarProductos(Producto producto){
+        return prod.add(producto);
     }
 
     public int getCodigo() {
@@ -65,6 +74,11 @@ public class Producto implements Comparable<Producto>{
     public void setRubro(Categoria rubro) {
         this.rubro = rubro;
     }
+
+    public TreeSet<Producto> getProd() {
+        return prod;
+    }
+    
     
 //    public void Rubro(String rubro){
 //        if (rubro.equalsIgnoreCase("comestible")||rubro.equalsIgnoreCase("perfumeria")||rubro.equalsIgnoreCase("limpieza")) {
@@ -127,4 +141,6 @@ public class Producto implements Comparable<Producto>{
             return -1;
         }
     }
+     
+     
 }
