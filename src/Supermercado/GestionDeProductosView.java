@@ -56,8 +56,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Filtrar po Categoria:");
 
-        jcbCategorias.setSelectedIndex(-1);
-
         jTableProductos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,6 +98,11 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                 jTDescripcionFocusLost(evt);
             }
         });
+        jTDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTCodigoActionPerformed(evt);
+            }
+        });
 
         jTCodigo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -121,11 +124,21 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         });
 
         jTRubro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTCodigoActionPerformed(evt);
+            }
+        });
 
         jTStock.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTStock.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTStockFocusLost(evt);
+            }
+        });
+        jTStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTCodigoActionPerformed(evt);
             }
         });
 
@@ -307,10 +320,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPrecioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTPrecioActionPerformed
-
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBEliminarActionPerformed
@@ -377,17 +386,16 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCodigoFocusLost
 
     private void jTDescripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTDescripcionFocusLost
-        String val = "";
-        if (jTDescripcion.getText().matches(val)) {
+        if (jTDescripcion.getText().length() == 0) {
         JOptionPane.showMessageDialog(this, "El campo no puede estar vacio!"); 
-        jTDescripcion.requestFocus();
+        jTCodigo.requestFocus();
         }
     }//GEN-LAST:event_jTDescripcionFocusLost
 
     private void jTPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTPrecioFocusLost
        try{
-        String prec = jTPrecio.getText();
-        double precio = Double.parseDouble(prec);
+        String precio= jTPrecio.getText();
+        double prec = Double.parseDouble(precio);
        }catch(NumberFormatException e){
            JOptionPane.showMessageDialog(this, "debe ingresar un precio valido!");
            jTPrecio.requestFocus();
@@ -401,6 +409,14 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
           jTStock.requestFocus();
         }
     }//GEN-LAST:event_jTStockFocusLost
+
+    private void jTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTCodigoActionPerformed
+
+    private void jTPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTPrecioActionPerformed
 
     private void llenarCombo() {
         for (Categoria aux : Categoria.values()) {
