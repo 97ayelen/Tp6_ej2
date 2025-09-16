@@ -60,28 +60,25 @@ public class ListaPorPrecioView extends javax.swing.JInternalFrame {
             return;
         }
 
-        double precioMin, precioMax;
+        double precioMin = Double.MIN_VALUE;
+        double precioMax = Double.MAX_VALUE;
 
         try {
-            if (desde.isEmpty()) {
-                precioMin = Double.MIN_VALUE;
-            } else {
+            if (!desde.isEmpty()) {
                 precioMin = Double.parseDouble(desde);
             }
 
-            if (hasta.isEmpty()) {
-                precioMax = Double.MAX_VALUE;
-            } else {
+            if (!hasta.isEmpty()) {
                 precioMax = Double.parseDouble(hasta);
             }
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar números válidos en los campos de precio", "Error de entrada", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+            if (!desde.isEmpty() && !hasta.isEmpty()) {
+                if (precioMin > precioMax) {
+                    return;
+                }
+            }
 
-        if (precioMin > precioMax) {
-            JOptionPane.showMessageDialog(this, "El precio minimo no puede ser mayor que el precio máximo", "Error de rango", JOptionPane.WARNING_MESSAGE);
+        } catch (NumberFormatException e) {
             return;
         }
 
