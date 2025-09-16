@@ -418,15 +418,16 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
         int fila = jTableProductos.getSelectedRow();
         
+        if (!validaCamposVacios(jPanel1)){
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos para guardar producto", "Campos incompletos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         if (fila != -1) {
             String s1 = jTableProductos.getValueAt(fila, 0).toString();
             int codigo = Integer.parseInt(s1);
-            boolean b1 = true;
             try {
-                Producto p1 = null;
                 for (Producto aux : prod) {
                     if (aux.getCodigo() == codigo) {
-                        p1 = aux;
                         aux.setCodigo(Integer.parseInt(jTCodigo.getText()));
                         aux.setDescripcion(jTDescripcion.getText());
                         aux.setPrecio(Double.parseDouble(jTPrecio.getText()));
@@ -435,10 +436,10 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(this, "El producto se ha modificado exitosamente!", "Válido", JOptionPane.INFORMATION_MESSAGE);
                         limpiarCampos(jPanel1);
                         desactivarCampos();
-                        if (!p1.getRubro().equals(aux.getRubro())) {
-                            modelo.removeRow(fila);
-                            break;
-                        }
+                            modelo.setValueAt(aux.getDescripcion(), fila, 1);
+                            modelo.setValueAt(aux.getPrecio(), fila, 2);
+                            modelo.setValueAt(aux.getRubro(), fila, 3);
+                            modelo.setValueAt(aux.getStock(), fila, 4);
                     }
                 }
             } catch (NumberFormatException e) {
@@ -467,6 +468,8 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         }
         
         activarCampos();
+        jTCodigo.setEditable(false);
+        
     }//GEN-LAST:event_jTableProductosMouseClicked
 
     private void llenarCombo() {
