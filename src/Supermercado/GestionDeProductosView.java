@@ -54,7 +54,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestion de Productos");
 
@@ -79,28 +78,28 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableProductosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableProductos);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Codigo:");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Descripcion:");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Precio:");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Rubro:");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Stock:");
 
         jTDescripcion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -118,8 +117,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                 jTPrecioActionPerformed(evt);
             }
         });
-
-        jcbRubro.setForeground(java.awt.Color.black);
 
         jSStock.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jSStock.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
@@ -144,7 +141,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                         .addComponent(jTCodigo)
                         .addComponent(jTPrecio)
                         .addComponent(jcbRubro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jSStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSStock, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -185,6 +182,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
             }
         });
 
+        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/icons8-magnifying-glass-tilted-right-48.png"))); // NOI18N
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
@@ -192,7 +190,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         });
 
         jBNuevo.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jBNuevo.setForeground(new java.awt.Color(0, 0, 0));
         jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/nuevo.png"))); // NOI18N
         jBNuevo.setText("Nuevo");
         jBNuevo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -204,7 +201,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         });
 
         jBGuardar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jBGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/guardar.png"))); // NOI18N
         jBGuardar.setText("Guardar");
         jBGuardar.setEnabled(false);
@@ -217,16 +213,19 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         });
 
         jBActualizar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jBActualizar.setForeground(new java.awt.Color(0, 0, 0));
         jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
         jBActualizar.setText("Actualizar");
         jBActualizar.setEnabled(false);
         jBActualizar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jBActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBActualizar.setIconTextGap(12);
+        jBActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBActualizarActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jBEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/eliminar.png"))); // NOI18N
         jBEliminar.setText("Eliminar");
         jBEliminar.setEnabled(false);
@@ -308,11 +307,26 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        // TODO add your handling code here:
+        int fila = jTableProductos.getSelectedRow();
+        if (fila != -1) {
+            String s1 = jTableProductos.getValueAt(fila, 0).toString();
+            int codigo = Integer.parseInt(s1);
+            for (Producto p : prod) {
+                if(p.getCodigo() == codigo) {
+                    prod.remove(p);
+                    modelo.removeRow(fila);
+                    JOptionPane.showMessageDialog(this, "Producto eliminado con éxito", "Válido", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarCampos(jPanel1);
+                    desactivarCampos();
+                    jBEliminar.setEnabled(false);
+                    break;
+                }
+            }
+        }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void ArmarCabecera() {
@@ -400,6 +414,60 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
+        int fila = jTableProductos.getSelectedRow();
+        
+        if (fila != -1) {
+            String s1 = jTableProductos.getValueAt(fila, 0).toString();
+            int codigo = Integer.parseInt(s1);
+            boolean b1 = true;
+            try {
+                Producto p1 = null;
+                for (Producto aux : prod) {
+                    if (aux.getCodigo() == codigo) {
+                        p1 = aux;
+                        aux.setCodigo(Integer.parseInt(jTCodigo.getText()));
+                        aux.setDescripcion(jTDescripcion.getText());
+                        aux.setPrecio(Double.parseDouble(jTPrecio.getText()));
+                        aux.setRubro((Categoria) jcbRubro.getSelectedItem());
+                        aux.setStock((Integer) jSStock.getValue());
+                        JOptionPane.showMessageDialog(this, "El producto se ha modificado exitosamente!", "Válido", JOptionPane.INFORMATION_MESSAGE);
+                        limpiarCampos(jPanel1);
+                        desactivarCampos();
+                        if (!p1.getRubro().equals(aux.getRubro())) {
+                            modelo.removeRow(fila);
+                            break;
+                        }
+                    }
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jBActualizarActionPerformed
+
+    private void jTableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProductosMouseClicked
+        int fila = jTableProductos.rowAtPoint(evt.getPoint());
+        
+        if (fila != -1) {
+            jTableProductos.setRowSelectionInterval(fila, fila);
+            jBActualizar.setEnabled(true);
+            jBEliminar.setEnabled(true);
+            String codigo = jTableProductos.getValueAt(fila, 0).toString();
+            String descripcion = jTableProductos.getValueAt(fila, 1).toString();
+            String precio = jTableProductos.getValueAt(fila, 2).toString();
+            String rubro = jTableProductos.getValueAt(fila, 3).toString();
+            String stock = jTableProductos.getValueAt(fila, 4).toString();
+            jTCodigo.setText(codigo);
+            jTDescripcion.setText(descripcion);
+            jTPrecio.setText(precio);
+            jcbRubro.setSelectedItem(rubro);
+            jSStock.setValue(Integer.parseInt(stock));
+        }
+        
+        activarCampos();
+    }//GEN-LAST:event_jTableProductosMouseClicked
 
     private void llenarCombo() {
         for (Categoria aux : Categoria.values()) {
