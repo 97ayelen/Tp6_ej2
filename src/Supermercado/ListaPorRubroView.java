@@ -5,6 +5,9 @@
  */
 package Supermercado;
 
+import java.awt.event.ItemEvent;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author crb_p
@@ -14,8 +17,45 @@ public class ListaPorRubroView extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaPorRubroView
      */
+    private DefaultTableModel modelo = new DefaultTableModel();
+
     public ListaPorRubroView() {
         initComponents();
+        armarCabecera();
+        llenarCombo();
+    }
+
+    private void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Stock");
+        tablaProducto.setModel(modelo);
+    }
+
+    private void llenarCombo() {
+        jcbRubro.removeAllItems();
+        for (Categoria aux : Categoria.values()) {
+            jcbRubro.addItem(aux);
+        }
+    }
+
+    public void filtrarPorRubro(Categoria categoria) {
+        modelo.setRowCount(0);
+
+        for (Producto p : GestionDeProductosView.prod) {
+            if (p.getRubro().equals(categoria)) {
+                modelo.addRow(new Object[]{
+                    p.getCodigo(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getRubro(),
+                    p.getStock()
+                });
+            }
+        }
+
     }
 
     /**
@@ -27,25 +67,31 @@ public class ListaPorRubroView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jlbListadoPorRubro = new javax.swing.JLabel();
+        jlbRubro = new javax.swing.JLabel();
+        jcbRubro = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProducto = new javax.swing.JTable();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Listado por Rubro");
+        setClosable(true);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Rubro:");
+        jlbListadoPorRubro.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jlbListadoPorRubro.setForeground(new java.awt.Color(0, 0, 0));
+        jlbListadoPorRubro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbListadoPorRubro.setText("Listado por Rubro");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jlbRubro.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlbRubro.setForeground(new java.awt.Color(0, 0, 0));
+        jlbRubro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbRubro.setText("Rubro:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jcbRubro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbRubroItemStateChanged(evt);
+            }
+        });
+
+        tablaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -56,7 +102,7 @@ public class ListaPorRubroView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaProducto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,15 +110,15 @@ public class ListaPorRubroView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbListadoPorRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(154, 154, 154))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlbRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcbRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -82,11 +128,11 @@ public class ListaPorRubroView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbListadoPorRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                    .addComponent(jlbRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbRubro, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
@@ -95,12 +141,21 @@ public class ListaPorRubroView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbRubroItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            Categoria categoriaSelect = (Categoria) jcbRubro.getSelectedItem();
+            if (categoriaSelect != null) {
+                filtrarPorRubro(categoriaSelect);
+            }
+        }
+    }//GEN-LAST:event_jcbRubroItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<Categoria> jcbRubro;
+    private javax.swing.JLabel jlbListadoPorRubro;
+    private javax.swing.JLabel jlbRubro;
+    private javax.swing.JTable tablaProducto;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,10 @@
  */
 package Supermercado;
 
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author crb_p
@@ -14,8 +18,71 @@ public class ListaPorPrecioView extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListaPorPrecioView
      */
+    private DefaultTableModel modelo = new DefaultTableModel();
+
     public ListaPorPrecioView() {
         initComponents();
+        armarCabecera();
+    }
+
+    private void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Stock");
+        tablaProducto.setModel(modelo);
+        tablaProducto.setEnabled(false);
+    }
+
+    private void cargarTablaPorPrecio(double desde, double hasta) {
+        modelo.setRowCount(0);
+
+        for (Producto p : GestionDeProductosView.prod) {
+            if (p.getPrecio() >= desde && p.getPrecio() <= hasta) {
+                modelo.addRow(new Object[]{
+                    p.getCodigo(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getRubro(),
+                    p.getStock()
+                });
+            }
+        }
+    }
+
+    private void filtrarPorPrecio() {
+        String desde = txtDesde.getText().trim();
+        String hasta = txtHasta.getText().trim();
+
+        if (desde.isEmpty() && hasta.isEmpty()) {
+            modelo.setRowCount(0);
+            return;
+        }
+
+        double precioMin = Double.MIN_VALUE;
+        double precioMax = Double.MAX_VALUE;
+
+        try {
+            if (!desde.isEmpty()) {
+                precioMin = Double.parseDouble(desde);
+            }
+
+            if (!hasta.isEmpty()) {
+                precioMax = Double.parseDouble(hasta);
+            }
+
+            if (!desde.isEmpty() && !hasta.isEmpty()) {
+                if (precioMin > precioMax) {
+                    return;
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            return;
+        }
+
+        cargarTablaPorPrecio(precioMin, precioMax);
     }
 
     /**
@@ -27,26 +94,46 @@ public class ListaPorPrecioView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jlbListadoPorPrecio = new javax.swing.JLabel();
+        jlbPrecioEntre = new javax.swing.JLabel();
+        txtDesde = new javax.swing.JTextField();
+        jlbY = new javax.swing.JLabel();
+        txtHasta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProducto = new javax.swing.JTable();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Listado por Precio");
+        setClosable(true);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Precio Entre $ :");
+        jlbListadoPorPrecio.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jlbListadoPorPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        jlbListadoPorPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbListadoPorPrecio.setText("Listado por Precio");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("y");
+        jlbPrecioEntre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlbPrecioEntre.setText("Precio Entre $ :");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        txtDesde.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDesdeKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDesdeKeyTyped(evt);
+            }
+        });
+
+        jlbY.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbY.setText("y");
+
+        txtHasta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtHastaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHastaKeyTyped(evt);
+            }
+        });
+
+        tablaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,7 +144,7 @@ public class ListaPorPrecioView extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaProducto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,16 +154,16 @@ public class ListaPorPrecioView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(149, 149, 149)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlbListadoPorPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlbPrecioEntre, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlbY, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2)))
+                        .addComponent(txtHasta)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 35, Short.MAX_VALUE)
@@ -87,13 +174,13 @@ public class ListaPorPrecioView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbListadoPorPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlbPrecioEntre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbY)
+                    .addComponent(txtHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(54, Short.MAX_VALUE))
@@ -102,14 +189,36 @@ public class ListaPorPrecioView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtDesdeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDesdeKeyReleased
+        filtrarPorPrecio();
+    }//GEN-LAST:event_txtDesdeKeyReleased
+
+    private void txtHastaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHastaKeyReleased
+        filtrarPorPrecio();
+    }//GEN-LAST:event_txtHastaKeyReleased
+
+    private void txtDesdeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDesdeKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '.' && c != KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDesdeKeyTyped
+
+    private void txtHastaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHastaKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '.' && c != KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtHastaKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jlbListadoPorPrecio;
+    private javax.swing.JLabel jlbPrecioEntre;
+    private javax.swing.JLabel jlbY;
+    private javax.swing.JTable tablaProducto;
+    private javax.swing.JTextField txtDesde;
+    private javax.swing.JTextField txtHasta;
     // End of variables declaration//GEN-END:variables
 }
