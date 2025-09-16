@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Tp6_ej2">
+  <ClassDiagramComponents>
+    <Class name="GestionDeProductosView" package="Supermercado" visibility="public" xPosition="-43.0" yPosition="379.0">
+      <Fields>
+        <Field name="modelo" type="DefaultTableModel" visibility="private"/>
+        <Field name="prod" type="TreeSet&lt;Producto&gt;" visibility="public" isStatic="true"/>
+        <Field name="jBActualizar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jBBuscar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jBEliminar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jBGuardar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jBNuevo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jBSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel5" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jSStock" type="javax.swing.JSpinner" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jTCodigo" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jTDescripcion" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jTPrecio" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jTableProductos" type="javax.swing.JTable" visibility="private"/>
+        <Field name="jcbCategorias" type="javax.swing.JComboBox&lt;Categoria&gt;" visibility="private"/>
+        <Field name="jcbRubro" type="javax.swing.JComboBox&lt;Categoria&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="jBEliminarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jBBuscarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ArmarCabecera" returnType="void" visibility="private"/>
+        <Method name="CargarDatos" returnType="void" visibility="private">
+          <Argument type="Producto" name="p"/>
+        </Method>
+        <Method name="jBGuardarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jBNuevoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jTCodigoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jTPrecioActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jcbCategoriasActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jBSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jBActualizarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jTableProductosMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="llenarCombo" returnType="void" visibility="private"/>
+        <Method name="activarCampos" returnType="void" visibility="private"/>
+        <Method name="desactivarCampos" returnType="void" visibility="private"/>
+        <Method name="validaCamposVacios" returnType="boolean" visibility="public">
+          <Argument type="JPanel" name="panel"/>
+        </Method>
+        <Method name="limpiarCampos" returnType="void" visibility="public">
+          <Argument type="JPanel" name="panel"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ListaPorNombre" package="Supermercado" visibility="public" xPosition="914.0" yPosition="20.0">
+      <Fields>
+        <Field name="modelo" type="DefaultTableModel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jlbIngreseDescripcion" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbListadoPorNombre" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jpListadoPorNombre" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="tablaProducto" type="javax.swing.JTable" visibility="private"/>
+        <Field name="txtDescripcion" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="armarCabecera" returnType="void" visibility="private"/>
+        <Method name="filtrarPorDescripcion" returnType="void" visibility="private">
+          <Argument type="String" name="texto"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="txtDescripcionActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txtDescripcionKeyReleased" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ListaPorPrecioView" package="Supermercado" visibility="public" xPosition="1624.0" yPosition="20.0">
+      <Fields>
+        <Field name="modelo" type="DefaultTableModel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jlbListadoPorPrecio" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbPrecioEntre" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbY" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="tablaProducto" type="javax.swing.JTable" visibility="private"/>
+        <Field name="txtDesde" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtHasta" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="armarCabecera" returnType="void" visibility="private"/>
+        <Method name="cargarTablaPorPrecio" returnType="void" visibility="private">
+          <Argument type="double" name="desde"/>
+          <Argument type="double" name="hasta"/>
+        </Method>
+        <Method name="filtrarPorPrecio" returnType="void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="txtDesdeKeyReleased" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="txtHastaKeyReleased" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="txtDesdeKeyTyped" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="txtHastaKeyTyped" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ListaPorRubroView" package="Supermercado" visibility="public" xPosition="222.0" yPosition="-13.0">
+      <Fields>
+        <Field name="modelo" type="DefaultTableModel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jcbRubro" type="javax.swing.JComboBox&lt;Categoria&gt;" visibility="private"/>
+        <Field name="jlbListadoPorRubro" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbRubro" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="tablaProducto" type="javax.swing.JTable" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="armarCabecera" returnType="void" visibility="private"/>
+        <Method name="llenarCombo" returnType="void" visibility="private"/>
+        <Method name="filtrarPorRubro" returnType="void" visibility="public">
+          <Argument type="Categoria" name="categoria"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="jcbRubroItemStateChanged" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ItemEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Panel" package="Supermercado" visibility="public" xPosition="1468.0" yPosition="439.0">
+      <Fields>
+        <Field name="Escritorio" type="javax.swing.JDesktopPane" visibility="private"/>
+        <Field name="jMBar1" type="javax.swing.JMenuBar" visibility="private"/>
+        <Field name="jMItGest" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMItem2XNomb" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMItemXPre" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMItemXRub" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuAdm" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenuCons" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenuItem1" type="javax.swing.JMenuItem" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="jMItGestActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMItemXPreActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMItemXRubActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMItem2XNombActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Producto" package="Supermercado" visibility="public" xPosition="816.0" yPosition="390.0">
+      <Fields>
+        <Field name="codigo" type="int" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+        <Field name="stock" type="int" visibility="private"/>
+        <Field name="rubro" type="Categoria" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="descripcion"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="int" name="stock"/>
+          <Argument type="Categoria" name="rubro"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCodigo" returnType="int" visibility="public"/>
+        <Method name="setCodigo" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+        </Method>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="precio"/>
+        </Method>
+        <Method name="getStock" returnType="int" visibility="public"/>
+        <Method name="setStock" returnType="void" visibility="public">
+          <Argument type="int" name="stock"/>
+        </Method>
+        <Method name="getRubro" returnType="Categoria" visibility="public"/>
+        <Method name="setRubro" returnType="void" visibility="public">
+          <Argument type="Categoria" name="rubro"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Producto" name="t"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="Categoria" package="Supermercado" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Literals>
+        <Literal name="COMESTIBLE"/>
+        <Literal name="LIMPIEZA"/>
+        <Literal name="PERFUMERIA"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="rubro" source="Supermercado.Producto" target="Supermercado.Categoria" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jcbCategorias" source="Supermercado.GestionDeProductosView" target="Supermercado.Categoria" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jcbRubro" source="Supermercado.ListaPorRubroView" target="Supermercado.Categoria" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Supermercado.Producto" target="Supermercado.Producto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Supermercado.ListaPorRubroView" target="Supermercado.Categoria" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Supermercado.GestionDeProductosView" target="Supermercado.Panel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jcbRubro" source="Supermercado.GestionDeProductosView" target="Supermercado.Categoria" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Supermercado.Producto" target="Supermercado.Categoria" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Supermercado.GestionDeProductosView" target="Supermercado.Producto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="prod" source="Supermercado.GestionDeProductosView" target="Supermercado.Producto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="TreeSet&lt;Producto&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
