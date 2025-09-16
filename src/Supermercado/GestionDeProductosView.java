@@ -14,10 +14,10 @@ import javax.swing.table.DefaultTableModel;
  * @author crb_p
  */
 public class GestionDeProductosView extends javax.swing.JInternalFrame {
-
+    
     private DefaultTableModel modelo = new DefaultTableModel();
     public static TreeSet<Producto> prod = new TreeSet<>();
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,6 +55,12 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Filtrar po Categoria:");
+
+        jcbCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbCategoriasActionPerformed(evt);
+            }
+        });
 
         jTableProductos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -177,7 +183,6 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         jBSalir.setIconTextGap(10);
         jBSalir.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jBBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\crb_p\\OneDrive\\Escritorio\\LABORATORIO 1\\iconos_netbeans\\iconos netbeans\\icons8-magnifying-glass-tilted-right-48.png")); // NOI18N
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
@@ -307,7 +312,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBBuscarActionPerformed
-
+    
     private void ArmarCabecera() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Descripcion");
@@ -315,9 +320,9 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         modelo.addColumn("Categoria");
         modelo.addColumn("Stock");
         jTableProductos.setModel(modelo);
-
+        
     }
-
+    
     private void CargarDatos(Producto p) {
         modelo.addRow(new Object[]{
             p.getCodigo(),
@@ -327,7 +332,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
             p.getStock()
         });
     }
-
+    
     public GestionDeProductosView() {
         initComponents();
         ArmarCabecera();
@@ -336,7 +341,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     }
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-
+        
         try {
             int codigo = Integer.parseInt(jTCodigo.getText());
             String descripcion = jTDescripcion.getText();
@@ -345,7 +350,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
             int stock = Integer.parseInt(jTStock.getText());
 //        VIDEO JtABLE PARTE 1
             Producto pr = new Producto(codigo, descripcion, precio, stock, rubro);
-
+            
             CargarDatos(pr);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "debe ingresar un valor valido!");
@@ -353,8 +358,8 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-       activarCampos();
-       jBGuardar.setEnabled(true);
+        activarCampos();
+        jBGuardar.setEnabled(true);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoActionPerformed
@@ -365,12 +370,23 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTPrecioActionPerformed
 
+    private void jcbCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCategoriasActionPerformed
+        Categoria seleccionada = (Categoria) jcbCategorias.getSelectedItem();
+        modelo.setRowCount(0);
+        
+        for (Producto p : prod) {
+            if (p.getRubro().equals(seleccionada)) {
+                CargarDatos(p);
+            }
+        }
+    }//GEN-LAST:event_jcbCategoriasActionPerformed
+    
     private void llenarCombo() {
         for (Categoria aux : Categoria.values()) {
             jcbCategorias.addItem(aux);
         }
     }
-
+    
     private void activarCampos() {
         jTCodigo.setEditable(true);
         jTDescripcion.setEditable(true);
@@ -379,21 +395,13 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         jTStock.setEditable(true);
     }
     
-    private void desactivarCampos(){
-       jTCodigo.setEditable(false);
+    private void desactivarCampos() {
+        jTCodigo.setEditable(false);
         jTDescripcion.setEditable(false);
         jTPrecio.setEditable(false);
         jTRubro.setEditable(false);
-        jTStock.setEditable(false);  
+        jTStock.setEditable(false);        
     }
-    
-    
-    
-    
-    
-    
-    
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
