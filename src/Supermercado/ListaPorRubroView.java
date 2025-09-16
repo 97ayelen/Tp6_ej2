@@ -73,6 +73,8 @@ public class ListaPorRubroView extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProducto = new javax.swing.JTable();
 
+        setClosable(true);
+
         jlbListadoPorRubro.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jlbListadoPorRubro.setForeground(new java.awt.Color(0, 0, 0));
         jlbListadoPorRubro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -179,6 +179,11 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         jBSalir.setHideActionText(true);
         jBSalir.setIconTextGap(10);
         jBSalir.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,6 +396,10 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jcbCategoriasActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
 
     private void llenarCombo() {
         for (Categoria aux : Categoria.values()) {
