@@ -10,6 +10,7 @@ import java.util.TreeSet;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -337,7 +338,10 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     }
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-
+        if (!validaCamposVacios(jPanel1)) {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos para guardar producto", "Campos incompletos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         try {
             int codigo = Integer.parseInt(jTCodigo.getText().trim());
             String descripcion = jTDescripcion.getText().trim();
@@ -352,10 +356,12 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Producto agregado con éxito", "Válido", JOptionPane.INFORMATION_MESSAGE);
                 jBGuardar.setEnabled(false);
                 desactivarCampos();
+                limpiarCampos(jPanel1);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ya existe un producto con ese código", "Inválido", JOptionPane.WARNING_MESSAGE);
             }
-
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "debe ingresar un valor valido!");
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número válido", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -409,6 +415,25 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         jSStock.setEnabled(false);
     }
 
+    public boolean validaCamposVacios(JPanel panel) {
+        for (Component comp : panel.getComponents()) {
+            if (comp instanceof JTextField) {
+                JTextField txt = (JTextField) comp;
+                if (txt.getText().trim().isEmpty()) {
+                    return false;
+                }
+            } else if (comp instanceof JComboBox) {
+                JComboBox combo = (JComboBox) comp;
+                Object selected = combo.getSelectedItem();
+                if (selected == null || selected.toString().trim().isEmpty()) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public void limpiarCampos(JPanel panel) {
         for (Component c : panel.getComponents()) {
             if (c instanceof JTextField) {
@@ -416,7 +441,10 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                 caja.setText("");
             } else if (c instanceof JComboBox) {
                 JComboBox combo = (JComboBox) c;
-                combo.setSelectedItem(null);
+                combo.setSelectedIndex(-1);
+            } else if (c instanceof JSpinner) {
+                JSpinner op = (JSpinner) c;
+                op.setValue(0);
             }
         }
     }

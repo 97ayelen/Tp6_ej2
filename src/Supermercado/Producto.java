@@ -19,7 +19,7 @@ public class Producto implements Comparable<Producto>{
     private double precio;
     private int stock;
     private Categoria rubro; 
-    private TreeSet<Producto> prod ;
+//    private TreeSet<Producto> prod ;
    
 
     public Producto(int codigo, String descripcion, double precio, int stock, Categoria rubro) {
@@ -28,12 +28,12 @@ public class Producto implements Comparable<Producto>{
         this.precio = precio;
         this.stock = stock;
         this.rubro = rubro;
-        this.prod = new TreeSet<>();
+//        this.prod = new TreeSet<>();
     }
     
-    public boolean agregarProductos(Producto producto){
-        return prod.add(producto);
-    }
+//    public boolean agregarProductos(Producto producto){
+//        return prod.add(producto);
+//    }
 
     public int getCodigo() {
         return codigo;
@@ -75,9 +75,9 @@ public class Producto implements Comparable<Producto>{
         this.rubro = rubro;
     }
 
-    public TreeSet<Producto> getProd() {
-        return prod;
-    }
+//    public TreeSet<Producto> getProd() {
+//        return prod;
+//    }
     
     
 //    public void Rubro(String rubro){
@@ -90,8 +90,8 @@ public class Producto implements Comparable<Producto>{
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + this.codigo;
+        int hash = 7;
+        hash = 79 * hash + this.codigo;
         return hash;
     }
 
@@ -108,18 +108,6 @@ public class Producto implements Comparable<Producto>{
         }
         final Producto other = (Producto) obj;
         if (this.codigo != other.codigo) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
-            return false;
-        }
-        if (this.stock != other.stock) {
-            return false;
-        }
-        if (!Objects.equals(this.descripcion, other.descripcion)) {
-            return false;
-        }
-        if (!Objects.equals(this.rubro, other.rubro)) {
             return false;
         }
         return true;
@@ -141,6 +129,8 @@ public class Producto implements Comparable<Producto>{
             return -1;
         }
     }
+    
+    
      
      
 }
