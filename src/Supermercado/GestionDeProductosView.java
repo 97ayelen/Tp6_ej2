@@ -5,8 +5,12 @@
  */
 package Supermercado;
 
+import java.awt.Component;
 import java.util.TreeSet;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,10 +18,10 @@ import javax.swing.table.DefaultTableModel;
  * @author crb_p
  */
 public class GestionDeProductosView extends javax.swing.JInternalFrame {
-    
+
     private DefaultTableModel modelo = new DefaultTableModel();
     public static TreeSet<Producto> prod = new TreeSet<>();
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,8 +40,8 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         jTDescripcion = new javax.swing.JTextField();
         jTCodigo = new javax.swing.JTextField();
         jTPrecio = new javax.swing.JTextField();
-        jTRubro = new javax.swing.JTextField();
-        jTStock = new javax.swing.JTextField();
+        jcbRubro = new javax.swing.JComboBox<>();
+        jSStock = new javax.swing.JSpinner();
         jBSalir = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
         jBNuevo = new javax.swing.JButton();
@@ -114,19 +118,10 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
             }
         });
 
-        jTRubro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTRubro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTCodigoActionPerformed(evt);
-            }
-        });
+        jcbRubro.setForeground(java.awt.Color.black);
 
-        jTStock.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTCodigoActionPerformed(evt);
-            }
-        });
+        jSStock.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jSStock.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,12 +137,13 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTDescripcion)
-                    .addComponent(jTCodigo)
-                    .addComponent(jTPrecio)
-                    .addComponent(jTRubro)
-                    .addComponent(jTStock, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                        .addComponent(jTCodigo)
+                        .addComponent(jTPrecio)
+                        .addComponent(jcbRubro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -165,15 +161,15 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(jcbRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(jSStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jBSalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -299,7 +295,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
                     .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -312,7 +308,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBBuscarActionPerformed
-    
+
     private void ArmarCabecera() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Descripcion");
@@ -320,9 +316,9 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
         modelo.addColumn("Categoria");
         modelo.addColumn("Stock");
         jTableProductos.setModel(modelo);
-        
+
     }
-    
+
     private void CargarDatos(Producto p) {
         modelo.addRow(new Object[]{
             p.getCodigo(),
@@ -332,7 +328,7 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
             p.getStock()
         });
     }
-    
+
     public GestionDeProductosView() {
         initComponents();
         ArmarCabecera();
@@ -341,17 +337,23 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     }
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        
+
         try {
-            int codigo = Integer.parseInt(jTCodigo.getText());
-            String descripcion = jTDescripcion.getText();
-            double precio = Double.parseDouble(jTPrecio.getText());
-            Categoria rubro = Categoria.valueOf(jTRubro.getText());
-            int stock = Integer.parseInt(jTStock.getText());
+            int codigo = Integer.parseInt(jTCodigo.getText().trim());
+            String descripcion = jTDescripcion.getText().trim();
+            double precio = Double.parseDouble(jTPrecio.getText().trim());
+            Categoria rubro = (Categoria) jcbRubro.getSelectedItem();
+            int stock = (Integer) jSStock.getValue();
 //        VIDEO JtABLE PARTE 1
             Producto pr = new Producto(codigo, descripcion, precio, stock, rubro);
-            
-            CargarDatos(pr);
+
+            if (prod.add(pr)) {
+                CargarDatos(pr);
+                JOptionPane.showMessageDialog(this, "Producto agregado con éxito", "Válido", JOptionPane.INFORMATION_MESSAGE);
+                jBGuardar.setEnabled(false);
+                desactivarCampos();
+            }
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "debe ingresar un valor valido!");
         }
@@ -359,7 +361,10 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         activarCampos();
+        limpiarCampos(jPanel1);
         jBGuardar.setEnabled(true);
+        jBActualizar.setEnabled(false);
+        jBEliminar.setEnabled(false);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoActionPerformed
@@ -373,34 +378,47 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     private void jcbCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCategoriasActionPerformed
         Categoria seleccionada = (Categoria) jcbCategorias.getSelectedItem();
         modelo.setRowCount(0);
-        
+
         for (Producto p : prod) {
             if (p.getRubro().equals(seleccionada)) {
                 CargarDatos(p);
             }
         }
     }//GEN-LAST:event_jcbCategoriasActionPerformed
-    
+
     private void llenarCombo() {
         for (Categoria aux : Categoria.values()) {
             jcbCategorias.addItem(aux);
+            jcbRubro.addItem(aux);
         }
     }
-    
+
     private void activarCampos() {
         jTCodigo.setEditable(true);
         jTDescripcion.setEditable(true);
         jTPrecio.setEditable(true);
-        jTRubro.setEditable(true);
-        jTStock.setEditable(true);
+        jcbRubro.setEnabled(true);
+        jSStock.setEnabled(true);
     }
-    
+
     private void desactivarCampos() {
         jTCodigo.setEditable(false);
         jTDescripcion.setEditable(false);
         jTPrecio.setEditable(false);
-        jTRubro.setEditable(false);
-        jTStock.setEditable(false);        
+        jcbRubro.setEnabled(false);
+        jSStock.setEnabled(false);
+    }
+
+    public void limpiarCampos(JPanel panel) {
+        for (Component c : panel.getComponents()) {
+            if (c instanceof JTextField) {
+                JTextField caja = (JTextField) c;
+                caja.setText("");
+            } else if (c instanceof JComboBox) {
+                JComboBox combo = (JComboBox) c;
+                combo.setSelectedItem(null);
+            }
+        }
     }
 
 
@@ -419,14 +437,14 @@ public class GestionDeProductosView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSStock;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTCodigo;
     private javax.swing.JTextField jTDescripcion;
     private javax.swing.JTextField jTPrecio;
-    private javax.swing.JTextField jTRubro;
-    private javax.swing.JTextField jTStock;
     private javax.swing.JTable jTableProductos;
     private javax.swing.JComboBox<Categoria> jcbCategorias;
+    private javax.swing.JComboBox<Categoria> jcbRubro;
     // End of variables declaration//GEN-END:variables
 
 }
